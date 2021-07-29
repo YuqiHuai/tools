@@ -1,0 +1,37 @@
+import subprocess
+import os
+path = "REPLACE WITH BASE PATH"
+
+tags = """2.0.0
+2.0.0-M1
+2.0.0-M2
+2.0.0-M3
+2.0.0-M4
+2.0.0-RC1
+2.0.0-RC2
+2.0.1
+2.0.2
+2.1.0
+2.2.0
+2.2.1
+2.2.2
+2.3.0
+2.3.1
+2.3.2"""
+
+tags = tags.strip().split('\n')
+
+for tag in tags[1:]:
+    subprocess.run(['cp', '-R', os.path.join(path, tags[0]), os.path.join(path, tag)])
+    os.chdir(os.path.join(path, tag))
+    subprocess.run(['git', 'checkout', f'tags/{tag}'])
+
+#  docker run --rm -it -v "$(pwd):/home/project" ubuntu_jdk_11
+#  cd /home/project
+#
+# Dockerfile (ubuntu_jdk_11)
+# FROM ubuntu
+# RUN apt-get update && \ 
+#     apt-get install --yes --no-install-recommends \
+#     openjdk-11-jdk \
+#     maven
