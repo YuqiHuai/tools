@@ -2,22 +2,9 @@ import subprocess
 import os
 path = "REPLACE WITH BASE PATH"
 
-tags = """2.0.0
-2.0.0-M1
-2.0.0-M2
-2.0.0-M3
-2.0.0-M4
-2.0.0-RC1
-2.0.0-RC2
-2.0.1
-2.0.2
-2.1.0
-2.2.0
-2.2.1
-2.2.2
-2.3.0
-2.3.1
-2.3.2"""
+tags = """tag1
+tag2
+tag3"""
 
 tags = tags.strip().split('\n')
 
@@ -34,4 +21,5 @@ for tag in tags[1:]:
 # RUN apt-get update && \ 
 #     apt-get install --yes --no-install-recommends \
 #     openjdk-11-jdk \
-#     maven
+#     maven \
+#     git
